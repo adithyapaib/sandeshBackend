@@ -12,6 +12,8 @@ module.exports = async (req, res) => {
     const database = client.db();
     const collection = database.collection('events');
     const data = await collection.find({}).toArray();
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', '*')
 
     res.json({ data });
   } catch (err) {
